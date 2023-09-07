@@ -1,5 +1,5 @@
 # Language file you want to use
-Language: EN
+Language: DE
 # Defines if you want to auto download default locale files from github repository
 # You can disable this if you are using EN or you already have your locale setup and you dont need to have other languages being downloaded
 LanguageDownload: true
@@ -181,7 +181,7 @@ Optimizations:
   # When set to true, all players can see missing permission node by hovering over error message
   # When set to false only players with cmi.permisiononerror permission node can see missing permission node
   # Keep in mind that by default players have acces to permission node, so negate it if you want to hide missing permission nodes from them
-  PermisionOnError: false
+  PermisionOnError: true
   # When set to true, each time player tries to use something he doesnthave permission, message will be shown in console
   PermisionInConsole: true
   Teleport:
@@ -217,7 +217,7 @@ Optimizations:
       # Defines if player can move when tpa or tpahere is being accepted
       Move: false
       # Defines time in seconds for blocking player teleport offers after denying their request
-      Block: 120
+      Block: 10
       # Distance in blocks for max teleportation range
       # Set to 0 if you want to disable it
       # Having it at any positive number will prevent players requesting teleportations to player in other wolds in adition to limiting it by range between players
@@ -230,7 +230,7 @@ Optimizations:
       MaxDistance: 0
     Tp:
       # Defines time in seconds for bypassing prevented teleportation to unsafe location
-      Bypass: 15
+      Bypass: 10
     # When set to true adds accept and deny buttons when sending tpa or tpahere requests
     DenyConfirm: true
     BlackListedItems:
@@ -544,13 +544,43 @@ ReSpawn:
     - spawn
     - homeLocation
     - worldSpawn
+    DIM-1:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
+    DIM1:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
+    DIM10:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
+    DIM20:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
+    DIM4:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
     DIM-9999:
     - anchor
     - bedLocation
     - spawn
     - homeLocation
     - worldSpawn
-    DIM-6:
+    DIM-11325:
     - anchor
     - bedLocation
     - spawn
@@ -562,22 +592,34 @@ ReSpawn:
     - spawn
     - homeLocation
     - worldSpawn
+    DIM7:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
+    DIM17:
+    - anchor
+    - bedLocation
+    - spawn
+    - homeLocation
+    - worldSpawn
 Afk:
   # Enable or disable auto afk system entirely
-  Enabled: false
+  Enabled: true
   # When enabled shows title message informing that player is in afk mode
-  TitleMessage: true
+  TitleMessage: false
   # When enabled shows random subtitle message
-  SubTitleMessage: true
+  SubTitleMessage: false
   # Prevents jumping in one place to avoid afk status
   PreventJumping: true
   # Prevents damage while afk
-  PreventDamage: true
+  PreventDamage: false
   # Defines how often in seconds plugin will check for afk players state
-  CheckInterval: 10
+  CheckInterval: 60
   # When set to true, players playtime counter stops
   # As of nature how this system works you can see +-1second jumping up and down while checking players playtime
-  StopPlayTime: false
+  StopPlayTime: true
   # Defines how long to wait after player stops moving to set him as afk
   # Player needs to have cmi.command.afk.auto permission node
   # Set to 0 if you want to disable it
@@ -585,21 +627,21 @@ Afk:
   # Defines commands to be performed when player enters afk mode automatically while addling
   # Supports specialized commands
   AutoAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis now AFK
+  - cmi broadcast !&6[playerDisplayName] &eist jetzt AFK
   # Defines commands to be performed when player enters /cmi afk
   # Supports specialized commands
   ManualAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis now AFK
+  - cmi broadcast !&6[playerDisplayName] &eist jetzt AFK
   # Defines commands to be performed when player leaves afk mode
   AfkLeaveCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis no longer AFK
+  - cmi broadcast !&6[playerDisplayName] &eist nicht länger AFK
   # Defines how long to wait after player stops moving to kick player
   # This is additional timer to AutoAfkIn and in case player entered afk mode manually he will get kicked after AutoAfkIn+AutoKickIn seconds
   # This can be used not only to kick but to perform repeating action every x seconds if needed
   # Keep it at -1 to disable auto kick
   # Can be bypassed with cmi.command.afk.kickbypass permission node
   # Additionally players kick time can be changed with cmi.command.afk.kickOutIn.[seconds] permission node where bigger value takes priority
-  AutoKickIn: -1
+  AutoKickIn: 600
   # This will define how long to wait before performing kick commands again
   RepeatingAutoKickInterval: 300
   # When set to true, kick command will be repeated each RepeatingAutoKickInterval seconds
@@ -607,7 +649,7 @@ Afk:
   # Defines commands to be performed when player can be kicked
   # If player is not kicked then commands will be repeated every RepeatingAutoKickInterval seconds
   AutoKickCmds:
-  - cmi kick [playerName] &eYou have been kicked for idling more than [time]
+  - cmi kick [playerName] &eDu wurstest nach [time] gekickt da du AFK bist
   # Defines worlds where players will not be placed into afk mode after they idled for defined time
   DisabledWorlds:
   - oneTestWorld
@@ -988,7 +1030,7 @@ Animations:
   CarpetsAsChairs: false
   RemoveFromChairOnDamage: true
   # Player will sit on chair only after rapid double click
-  DoubleClick: false
+  DoubleClick: true
   # Delay in milliseconds between clicks to sit on chair when double click is enabled
   DoubleClickDelay: 200
   # Range in blocks from player to look up for valid chair block
@@ -999,8 +1041,8 @@ Animations:
 # Negative values will heal player instead of damaging him
 # If player have more than one permission node for same damage cause, then last one in list will be used to determine final damage
 DamageControl:
-- nowalldamage:fly_into_wall:1
-- lowermagmacubedamage:hot_floor:0.9
+- nowalldamage:fly_into_wall:0
+- lowermagmacubedamage:hot_floor:0.5
 Totem:
   # When this set to true, on players death totem will be used even if he is not holding it in hand
   RemoveFromInventory: false
@@ -1201,23 +1243,23 @@ Spawn:
   # Defines players spawn point after death if set to true, if not, then it will be used only for /cmi spawn command
   # RespawnLocation will indicate if you want to use this location as possible respawn point for player after death
   Main:
-    World: None
-    X: 0.0
-    Y: 0.0
-    Z: 0.0
-    Pitch: 0.0
-    Yaw: 0.0
+    World: world
+    X: -8.467938714236137
+    Y: 73.0
+    Z: 46.57587339503503
+    Pitch: 13.799992
+    Yaw: 226.80031
     RespawnLocation: false
     Rng: 0
   # Defines players first spawn point when he logs into server for the first time
   FirstSpawn:
     Use: true
-    World: None
-    X: 0.0
-    Y: 0.0
-    Z: 0.0
-    Pitch: 0.0
-    Yaw: 0.0
+    World: world
+    X: -7.900345737318094
+    Y: 73.0
+    Z: 43.7695852024136
+    Pitch: 13.800036
+    Yaw: 231.30035
 Newbie:
   # Kit name to give for new players joining server
   Kit: Newbie
@@ -1302,9 +1344,16 @@ WorldLimits:
   # When set to false, only players with cmi.worldlimit.fly.aboveroof can fly above world build limit
   FlyAboveRoofLimitations:
   - world-256
+  - DIM-1-128
+  - DIM1-256
+  - DIM10-256
+  - DIM20-256
+  - DIM4-256
   - DIM-9999-256
-  - DIM-6-256
+  - DIM-11325-256
   - DIM2-256
+  - DIM7-256
+  - DIM17-256
   # If player will have cmi.worldlimit.god.bypass permission node, god mode wont be changed
   GodMode:
   - testWorld:False
@@ -1312,11 +1361,25 @@ WorldLimits:
   SpawnReasons:
     world:
     - None
+    DIM-1:
+    - None
+    DIM1:
+    - None
+    DIM10:
+    - None
+    DIM20:
+    - None
+    DIM4:
+    - None
     DIM-9999:
     - None
-    DIM-6:
+    DIM-11325:
     - None
     DIM2:
+    - None
+    DIM7:
+    - None
+    DIM17:
     - None
 # Checks and shows on players login if he have been changed hes name over Mojang
 # Looks to be working only with online servers, duhhhh
@@ -1361,7 +1424,7 @@ hunger:
 heal:
   RemoveNegative:
     # Do you want to remove negative potion effects from player on heal
-    use: true
+    use: false
     List:
     - blindness
     - confusion
@@ -1690,44 +1753,44 @@ purge:
     # Do you want to enable player data file cleaning
     Enabled: true
     # Source folder to take files from
-    SourceFolder: world/playerdata
+    SourceFolder: world\playerdata
     # When this is false, data files will be moved to backup folder. When its true files will be deleted
     DeleteFiles: false
     # Target folder to put files into if DeleteFiles set to false
-    DestinationFolder: world/playerdata_backup
+    DestinationFolder: world\playerdata_backup
   PlayerStats:
     # Do you want to enable player stats file cleaning
     Enabled: true
     # Source folder to take files from
-    SourceFolder: world/stats
+    SourceFolder: world\stats
     # When this is false, data files will be moved to backup folder. When its true files will be deleted
     DeleteFiles: false
     # Target folder to put files into if DeleteFiles set to false
-    DestinationFolder: world/stats_backup
+    DestinationFolder: world\stats_backup
   PlayerAdvancements:
     # Do you want to enable player Advancements file cleaning
     Enabled: true
     # Source folder to take files from
-    SourceFolder: world/Advancements
+    SourceFolder: world\Advancements
     # When this is false, data files will be moved to backup folder. When its true files will be deleted
     DeleteFiles: false
     # Target folder to put files into if DeleteFiles set to false
-    DestinationFolder: world/Advancements_backup
+    DestinationFolder: world\Advancements_backup
   Essentials:
     # Do you want to enable essentials playerdata file cleaning
     Enabled: false
     # Source folder to take files from
-    SourceFolder: plugins/Essentials/userdata
+    SourceFolder: plugins\Essentials\userdata
     # When this is false, data files will be moved to backup folder. When its true files will be deleted
     DeleteFiles: false
     # Target folder to put files into if DeleteFiles set to false
-    DestinationFolder: plugins/Essentials/userdata_backup
+    DestinationFolder: plugins\Essentials\userdata_backup
   LWC:
     # Do you want to enable lwc protection cleaning
     Enabled: false
 Selection:
   # Tool id to use for selection actions
-  Tool: wooden_shovel
+  Tool: minecraft:gold_ingot
 Time:
   # Defines preset time
   Day: '12:00'
@@ -1765,7 +1828,77 @@ RandomTeleportation:
   # Setting to false will not longer generate world setups, but you can add them manually if needed
   AutoGenerateWorlds: true
   Worlds:
+    # World name to use this feature. Add annother one with appropriate name to enable random teleportation
     world:
+      Enabled: true
+      # Max coordinate to teleport, setting to 1000, player can be teleported between -1000 and 1000 blocks between defined center location
+      # For example having centerX at 2000 and centerZ at 3000 while MaxRange is set to 1500 we will teleport player between x:500;z:1500 and x:3500;z:4500 coordinates
+      MaxRange: 1000
+      # If maxcord set to 1000 and mincord to 500, then player can be teleported between -1000 to -500 and 1000 to 500 coordinates
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      # With this option we will only attempt to teleport player on highest block and ignore any cave teleportations
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM-1:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM1:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM10:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM20:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM4:
       Enabled: true
       MaxRange: 1000
       MinRange: 500
@@ -1791,7 +1924,7 @@ RandomTeleportation:
       surfaceOnly: false
       minY: 0
       maxY: 256
-    DIM-6:
+    DIM-11325:
       Enabled: true
       MaxRange: 1000
       MinRange: 500
@@ -1805,6 +1938,97 @@ RandomTeleportation:
       minY: 0
       maxY: 256
     DIM2:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM7:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM17:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM144:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM4598:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    skyblock:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM111:
+      Enabled: true
+      MaxRange: 1000
+      MinRange: 500
+      CenterX: 0
+      CenterZ: 0
+      Circle: false
+      IgnoreWater: true
+      IgnoreLava: true
+      ignorePowderSnow: false
+      surfaceOnly: false
+      minY: 0
+      maxY: 256
+    DIM-6:
       Enabled: true
       MaxRange: 1000
       MinRange: 500
@@ -1967,8 +2191,6 @@ Scavenge:
   - ironingot
   - goldingot
   - coal
-  - IRON_NUGGET
-  - GOLD_NUGGET
   # When set to true, balck list becomes whitelist and will allow scavanging of items defined in a blacklist only
   BlackToWhiteList: false
   # When set to false while player have open scavange UI they will not be able to pickup item from ground
